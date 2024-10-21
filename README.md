@@ -1,4 +1,4 @@
-# regexplanet-TEMPLATE [<img align="right" alt="RegexPlanet icon" height="96" src="static/favicon.svg" />](http://www.regexplanet.com/advanced/TEMPLATE/index.html)
+# regexplanet-template [<img align="right" alt="RegexPlanet icon" height="96" src="static/favicon.svg" />](http://www.regexplanet.com/)
 
 [![deploy](https://github.com/regexplanet/regexplanet-template/actions/workflows/gcr-deploy.yaml/badge.svg)](https://github.com/regexplanet/regexplanet-template/actions/workflows/gcr-deploy.yaml)
 

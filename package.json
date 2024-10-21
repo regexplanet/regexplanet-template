@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@fastify/static": "^8.0.1",
+    "@regexplanet/common": "npm:@jsr/regexplanet__common@^1.1.0",
     "fastify": "^5.0.0"
   },
   "description": "Template for regex engines that run in Node.js",

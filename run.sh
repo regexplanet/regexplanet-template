@@ -19,4 +19,4 @@ npm install
 
 npx tsc-watch \
   --incremental \
-  --onSuccess "node dist/server.js"
+  --onSuccess "node dist/local.js"
