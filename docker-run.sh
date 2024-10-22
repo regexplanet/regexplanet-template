@@ -15,11 +15,10 @@ docker build \
 
 echo "INFO: running"
 docker run \
-	--env PORT=4000 \
-	--expose 4000 \
+	--env PORT=5000 \
 	--interactive \
 	--name "${APP_NAME}" \
-	--publish 4000:4000 \
+	--publish 5000:5000 \
 	--rm \
 	--tty \
 	"${APP_NAME}"

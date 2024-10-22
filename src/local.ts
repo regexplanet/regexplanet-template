@@ -3,7 +3,8 @@
  */
 
 import process from "node:process";
-import { type getVersionFn, type runTestFn } from "./types.js";
+import { type runTestFn } from "@regexplanet/common";
+import { type getVersionFn } from "./types.js";
 import { server } from "./server.js";
 
 const getVersion:getVersionFn = () =>
@@ -14,17 +15,17 @@ const getVersion:getVersionFn = () =>
 }
 
 const runTest:runTestFn = (testInput) => {
-    return {
+    return Promise.resolve({
         success: true,
-        html: "<p>Test resuls would go here",
+        html: `<p>Test results would go here for pattern "${testInput.regex}" replaced by ${testInput.replacement}"</p>`,
         message: "Template is running!",
-    };
+    });
 }
 
 server({
-    engineCode: "nodejs",
-    engineName: "Node.js",
-    engineRepo: "regexplanet-nodejs",
+    engineCode: "nodejs-local",
+    engineName: "Node.js (local)",
+    engineRepo: "regexplanet-template",
     getVersion,
     runTest,
 });

@@ -40,5 +40,7 @@ COPY --chown=nonroot:nonroot --from=builder /app/dist /app/dist
 COPY --chown=nonroot:nonroot --exclude=src . /app
 
 WORKDIR /app
+ENV PORT 5000
+ENV HOSTNAME 0.0.0.0
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["/nodejs/bin/node", "dist/server.js"]
