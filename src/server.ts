@@ -10,6 +10,15 @@ import path from "node:path";
 import { TestInput } from "@regexplanet/common";
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
+function getArray(value:string|string[]|undefined): string[] {
+    if (value === undefined) {
+        return [];
+    } else if (Array.isArray(value)) {
+        return value;
+    }
+    return [value];
+}
+
 export const server: serverFn = async (props) => {
     const server: FastifyInstance = Fastify({
         logger: true,
@@ -59,12 +68,19 @@ export const server: serverFn = async (props) => {
             if (req.headers["content-type"] === "application/json") {
                 testInput = req.body as TestInput;
             } else if (req.headers["content-type"] === "application/x-www-form-urlencoded") {
-                testInput = req.body as TestInput;
+                const data = req.body as { [key: string]: string|string[]|undefined };
+                testInput = {
+                    regex: data.regex as string,
+                    replacement: data.replacement as string,
+                    engine: data.engine as string,
+                    options: getArray(data.option),
+                    inputs: getArray(data.input),
+                };
             }
         } else if (req.method === "GET") {
             const searchParams = new URL(req.url, `http://${req.headers.host}`).searchParams;
             testInput = {
-                engine: searchParams.get("engine") || "deno",
+                engine: searchParams.get("engine") || "unknown",
                 regex: searchParams.get("regex") || "",
                 replacement: searchParams.get("replacement") || "",
                 options: searchParams.getAll("option") as string[],
